@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {Board} from "../../models/board";
 
 @Component({
   selector: 'app-morpions',
   templateUrl: './morpions.component.html',
   styleUrls: ['./morpions.component.scss']
 })
-export class MorpionsComponent implements OnInit {
+export class MorpionsComponent{
 
-  constructor() { }
+  board: Board = new Board();
+  start: boolean = true;
 
-  ngOnInit(): void {
+  nouvellePartie(){
+    this.board = new Board();
+    this.start = true;
   }
-
 }

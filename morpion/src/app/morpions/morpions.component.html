@@ -1,1 +1,13 @@
-<p>morpions works!</p>
+<div class="container">
+  <div class="morpion">
+    <button class="case" *ngFor="let case of board.damier; let i = index"
+         (click)="board.newPlay(i)" [disabled]="board.damier[i].team != '' || board.winner != ''">{{board.damier[i].team}}</button>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <button class="btn btn-success mt-3" (click)="nouvellePartie()" [hidden]="">Nouvelle Partie</button>
+      <p class="text-center mt-3" [hidden]="board.winner == ''">Le gagnant est {{board.winner}}</p>
+    </div>
+  </div>
+</div>
