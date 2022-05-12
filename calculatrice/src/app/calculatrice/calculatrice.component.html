@@ -1,16 +1,76 @@
-<div class="container">
-  <div class="row">
+<div class="container mt-5">
+  <div class="row justify-content-center mb-2">
     <div class="col-1">
-      <button class="btn btn-outline-dark">7</button>
+      <button class="btn btn-outline-dark" (click)="numberClicked(7)">7</button>
     </div>
     <div class="col-1">
-      <button class="btn btn-outline-dark">8</button>
+      <button class="btn btn-outline-dark" (click)="numberClicked(8)">8</button>
     </div>
     <div class="col-1">
-      <button class="btn btn-outline-dark">9</button>
+      <button class="btn btn-outline-dark" (click)="numberClicked(9)">9</button>
     </div>
     <div class="col-1">
-      <button class="btn btn-outline-dark">*</button>
+      <button class="btn btn-outline-dark" (click)="operationClicked('*')" [disabled]="leftElement.label == '' || leftElement.label == '-'">*</button>
     </div>
   </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="numberClicked(4)">4</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="numberClicked(5)">5</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="numberClicked(6)">6</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="operationClicked('-')">-</button>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="numberClicked(1)">1</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="numberClicked(2)">2</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="numberClicked(3)">3</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="operationClicked('+')" [disabled]="leftElement.label == '' || leftElement.label == '-'">+</button>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="numberClicked(0)">0</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="operationClicked('^')" [disabled]="leftElement.label == '' || leftElement.label == '-'">exposant</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="operationClicked('^(')" [disabled]="leftElement.label == '' || leftElement.label == '-'">racine</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-dark" (click)="operationClicked('/')" [disabled]="leftElement.label == '' || leftElement.label == '-'">/</button>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-1">
+      <button class="btn btn-outline-primary" (click)="showResult = true" [disabled]="fullElement?.rightElement?.label == '' || leftElement.label ==''">=</button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-primary" (click)="clear()">effacer</button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class = 'col-3'>
+      <div class="result p-2" [hidden]="leftElement.label==''">
+        <span class="d-inline-block text-start">{{returnElement().getResult()}}</span><span class="text-end" [hidden]="!showResult">{{returnElement().calcResult()}}</span>
+      </div>
+    </div>
+  </div>
+
 </div>
+
